@@ -48,14 +48,23 @@ while game_is_on:
         # game_is_on = False
         # scoreBoard.game_over()
         scoreBoard.reset()
+        snake.reset()
     
     #detect collision with tail added here
 
-    for segment in snake.segments[1:]:
+    # for segment in snake.segments[1:]:
 
-        if snake.head.distance(segment) < 10:
+    #     if snake.head.distance(segment) < 10:
             # game_is_on = False
             # scoreBoard.game_over()
+    # ----------- alternative way for detect colission with tails ------
+    
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            scoreBoard.reset()
+            snake.reset()
 
 screen.exitonclick()
 
